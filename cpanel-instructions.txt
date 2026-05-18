@@ -1,0 +1,40 @@
+# WebWatch Pro - cPanel Deployment Instructions
+
+Follow these exact steps to host the WebWatch Pro "Checking Engine" on your BigRock cPanel.
+
+## Step 1: Prepare the Files
+1. Go to the `d:\WebWatch` folder on your laptop.
+2. Select ALL files and folders (except `node_modules` and `.next`) and compress them into a single `webwatch.zip` file.
+
+## Step 2: Upload to BigRock
+1. Log into your BigRock cPanel.
+2. Go to **File Manager**.
+3. Create a new folder (e.g., `webwatch-server`) inside your main directory (usually NOT inside `public_html` for security, unless you are using a specific subdomain folder).
+4. Upload `webwatch.zip` into this new folder and extract it.
+
+## Step 3: Setup Node.js App
+1. Go back to the main cPanel dashboard.
+2. Click on **Setup Node.js App** (under Software).
+3. Click **Create Application**.
+4. Set **Node.js version** to 18.x or 20.x (highest available).
+5. Set **Application mode** to Production.
+6. Set **Application root** to the folder you created (e.g., `webwatch-server`).
+7. Set **Application URL** to your chosen subdomain (e.g., `monitor.yourdomain.com`).
+8. Set **Application startup file** to `node_modules/next/dist/bin/next`. (Alternatively, if BigRock requires a custom server script, you will run `npm run build` and `npm start` via the terminal/SSH).
+9. Click **Create** and then run **Run NPM Install** from the interface.
+
+*Note: Since Next.js on cPanel can be tricky with the "Startup File", the easiest foolproof method is to open cPanel's "Terminal", navigate to your folder (`cd webwatch-server`), run `npm install`, then `npm run build`, and finally start it using PM2 (`pm2 start npm --name "webwatch" -- start`).*
+
+## Step 4: The 24/7 Cron Job (CRITICAL)
+For the server to actually check your websites 24/7, you must set up a cron job.
+1. Go back to the main cPanel dashboard.
+2. Click on **Cron Jobs** (under Advanced).
+3. Under "Common Settings", select **Once Per Minute (* * * * *)**.
+4. In the **Command** field, paste this exactly (replace with your actual URL):
+   `curl -X POST https://monitor.yourdomain.com/api/checks/run >/dev/null 2>&1`
+5. Click **Add New Cron Job**.
+
+## Master Password
+Your dashboard is now secured. When you or the Desktop App accesses it, use:
+- **Username:** admin
+- **Password:** WebWatch2026!

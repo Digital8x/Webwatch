@@ -538,5 +538,248 @@
     "statusCode": 200,
     "error": null,
     "checkedAt": "2026-05-18T10:17:56.179Z"
+  },
+  {
+    "id": "d195aa52-34ae-4938-86cc-30a929cfe19b",
+    "monitorId": "84f4b54c-2b48-48f0-8506-ba7bc186bacd",
+    "status": "up",
+    "responseTime": 329,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:18:55.986Z"
+  },
+  {
+    "id": "a97df8c8-ab9b-4f5d-8d39-522d88dda9b3",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 219,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:18:56.213Z"
+  },
+  {
+    "id": "b0162257-339a-4a2c-8559-c932f160b859",
+    "monitorId": "84f4b54c-2b48-48f0-8506-ba7bc186bacd",
+    "status": "up",
+    "responseTime": 694,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:19:57.234Z"
+  },
+  {
+    "id": "1601e88f-f241-4771-bbf5-92d70691c421",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 394,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:19:57.636Z"
+  },
+  {
+    "id": "6dca753a-1be7-410c-a6d0-b28092aa7b85",
+    "monitorId": "84f4b54c-2b48-48f0-8506-ba7bc186bacd",
+    "status": "up",
+    "responseTime": 570,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:20:56.261Z"
+  },
+  {
+    "id": "a2555d06-8a46-4a44-8338-e54c38b430e7",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 429,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:20:56.698Z"
+  },
+  {
+    "id": "f0620ab2-04be-4947-b8eb-32b70da5a451",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 413,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:21:35.828Z"
+  },
+  {
+    "id": "36e067ee-fa7b-404c-8cb3-cab1529a7fb0",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 369,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:21:35.849Z"
+  },
+  {
+    "id": "84c7b835-3fe6-4b9b-a4ac-f6eefa6cd33d",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 766,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:22:36.145Z"
+  },
+  {
+    "id": "8e425b58-02e7-4316-abf7-4d35c247af6e",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 291,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:23:35.678Z"
+  },
+  {
+    "id": "c4404fe9-3413-496e-9eb4-090376b4745c",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 163,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:24:35.563Z"
+  },
+  {
+    "id": "7e815910-89a4-4522-83ae-0d02fbfae91a",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 763,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:25:36.165Z"
+  },
+  {
+    "id": "934c44ed-3b80-4c76-a39a-ebdb991d5f73",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 158,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:26:35.546Z"
+  },
+  {
+    "id": "b05c9a39-1365-438e-8468-29b898b69cbf",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 314,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:27:35.697Z"
+  },
+  {
+    "id": "3420a22e-8e34-49fe-a330-79bb3a2694bf",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 587,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:28:35.978Z"
+  },
+  {
+    "id": "d1653dce-ce1b-4e1e-a1ee-a107e8b88b17",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 1300,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:29:36.688Z"
+  },
+  {
+    "id": "1220cfb6-77d8-4422-a3f3-083559980c28",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 477,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:30:35.882Z"
+  },
+  {
+    "id": "a5d7642a-9793-4e53-9e64-0764657aebfa",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 591,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:31:35.985Z"
+  },
+  {
+    "id": "f365bb95-3f50-44ef-a763-fe4a4c4adb61",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 1648,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:32:37.034Z"
+  },
+  {
+    "id": "b05dcc4e-7531-4a07-9808-785f4acb2fab",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 1410,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:33:36.795Z"
+  },
+  {
+    "id": "98f62342-53cd-446c-aaca-8ee0dd83b5fd",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 343,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:34:35.728Z"
+  },
+  {
+    "id": "1379c6ef-1d6b-4c4f-bfe7-380405977565",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 321,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:35:35.705Z"
+  },
+  {
+    "id": "9c3e2d50-8d61-416f-bec3-abdd4f16ac05",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 300,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:36:35.690Z"
+  },
+  {
+    "id": "60e86ee2-a007-47c5-9565-1fedafea003e",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 428,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:37:35.820Z"
+  },
+  {
+    "id": "79ac901b-9f46-4cdf-ba29-58bd442fcf40",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 333,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:38:35.717Z"
+  },
+  {
+    "id": "ec0e446f-5ea1-433a-80f1-bd5c3f377ec4",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 431,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:39:35.803Z"
+  },
+  {
+    "id": "37a3518d-713d-4c7e-82f4-436100505254",
+    "monitorId": "767f3176-bef8-40e9-a78f-967b7492187d",
+    "status": "up",
+    "responseTime": 353,
+    "statusCode": 200,
+    "error": null,
+    "checkedAt": "2026-05-18T10:40:35.752Z"
   }
 ]

@@ -7,10 +7,11 @@ export function middleware(req: NextRequest) {
   
   if (basicAuth) {
     const authValue = basicAuth.split(' ')[1];
-    const [user, pwd] = atob(authValue).split(':');
+    const [user, pwd] = Buffer.from(authValue, 'base64').toString().split(':');
 
     // Master username and password for your Server Engine
-    if (user === 'admin' && pwd === 'WebWatch2026!') {
+    const masterPassword = process.env.WEBWATCH_PASSWORD || 'WebWatch2026!';
+    if (user === 'admin' && pwd === masterPassword) {
       return NextResponse.next();
     }
   }

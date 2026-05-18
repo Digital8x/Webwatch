@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { sync as writeFileSyncAtomic } from 'write-file-atomic';
 import { Monitor, Check, Incident, AppSettings } from '@/types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -27,7 +28,7 @@ function readJSON<T>(filename: string, defaultValue: T): T {
 function writeJSON<T>(filename: string, data: T): void {
   ensureDataDir();
   const filePath = path.join(DATA_DIR, filename);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+  writeFileSyncAtomic(filePath, JSON.stringify(data, null, 2));
 }
 
 // ── Monitors ──────────────────────────────────────────────────────────

@@ -1,31 +1,38 @@
-# WebWatch Pro - cPanel Deployment Instructions
+# WebWatch Pro - cPanel Git Deployment Instructions
 
-Follow these exact steps to host the WebWatch Pro "Checking Engine" on your BigRock cPanel.
+Since you have Git and Terminal access on your BigRock cPanel, deploying is much cleaner and faster! Follow these exact steps.
 
-## Step 1: Prepare the Files
-1. Go to the `d:\WebWatch` folder on your laptop.
-2. Select ALL files and folders (except `node_modules` and `.next`) and compress them into a single `webwatch.zip` file.
+## Step 1: Clone the Repository
+1. Log into your BigRock cPanel and open the **Terminal**.
+2. Run this command to download your code directly from GitHub into a new folder:
+   `git clone https://github.com/Digital8x/Webwatch.git webwatch-server`
+3. Enter the folder:
+   `cd webwatch-server`
 
-## Step 2: Upload to BigRock
-1. Log into your BigRock cPanel.
-2. Go to **File Manager**.
-3. Create a new folder (e.g., `webwatch-server`) inside your main directory (usually NOT inside `public_html` for security, unless you are using a specific subdomain folder).
-4. Upload `webwatch.zip` into this new folder and extract it.
+## Step 2: Add Your Password (Crucial!)
+Because we specifically blocked your password from being uploaded to GitHub for security, you must recreate it on the server.
+1. Run this command in the terminal to create your secret `.env` file:
+   `echo "WEBWATCH_PASSWORD=W@tch!Pr0#9kL2$mX8" > .env.local`
 
-## Step 3: Setup Node.js App
-1. Go back to the main cPanel dashboard.
-2. Click on **Setup Node.js App** (under Software).
-3. Click **Create Application**.
-4. Set **Node.js version** to 18.x or 20.x (highest available).
-5. Set **Application mode** to Production.
-6. Set **Application root** to the folder you created (e.g., `webwatch-server`).
-7. Set **Application URL** to your chosen subdomain (e.g., `monitor.yourdomain.com`).
-8. Set **Application startup file** to `node_modules/next/dist/bin/next`. (Alternatively, if BigRock requires a custom server script, you will run `npm run build` and `npm start` via the terminal/SSH).
-9. Click **Create** and then run **Run NPM Install** from the interface.
+## Step 3: Install & Build
+Still inside the terminal, run:
+1. `npm install`
+2. `npm run build`
+*(This installs the dependencies and compiles your Next.js application for production).*
 
-*Note: Since Next.js on cPanel can be tricky with the "Startup File", the easiest foolproof method is to open cPanel's "Terminal", navigate to your folder (`cd webwatch-server`), run `npm install`, then `npm run build`, and finally start it using PM2 (`pm2 start npm --name "webwatch" -- start`).*
+## Step 4: Start the Server
+Depending on how you manage Node apps on BigRock:
+**Option A (Using PM2 - Recommended):**
+`pm2 start npm --name "webwatch" -- start`
+`pm2 save`
 
-## Step 4: The 24/7 Cron Job (CRITICAL)
+**Option B (Using cPanel's Setup Node.js App UI):**
+1. Go to **Setup Node.js App** in cPanel.
+2. Create an App pointing to the `webwatch-server` folder.
+3. Set the startup file to `node_modules/next/dist/bin/next`.
+4. Click Start.
+
+## Step 5: The 24/7 Cron Job (CRITICAL)
 For the server to actually check your websites 24/7, you must set up a cron job.
 1. Go back to the main cPanel dashboard.
 2. Click on **Cron Jobs** (under Advanced).
@@ -35,6 +42,6 @@ For the server to actually check your websites 24/7, you must set up a cron job.
 5. Click **Add New Cron Job**.
 
 ## Master Password
-Your dashboard is now secured. When you or the Desktop App accesses it, use:
+When you or the Desktop App accesses the dashboard, use:
 - **Username:** admin
-- **Password:** WebWatch2026!
+- **Password:** W@tch!Pr0#9kL2$mX8

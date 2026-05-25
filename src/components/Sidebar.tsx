@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Activity, LayoutDashboard, Globe, AlertTriangle, Settings, Bell } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Activity, LayoutDashboard, Globe, AlertTriangle, Settings, Bell, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -14,6 +14,21 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/auth/logout', { method: 'POST' });
+      if (response.ok) {
+        router.push('/login');
+        router.refresh();
+      } else {
+        console.error('Failed to logout:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Failed to logout:', error);
+    }
+  };
 
   return (
     <aside className="w-64 border-r border-border bg-surface-1 flex flex-col hidden md:flex z-10 shadow-xl">
@@ -48,7 +63,7 @@ export default function Sidebar() {
         })}
       </div>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-4">
         <div className="bg-surface-2 rounded-xl p-4 flex items-start gap-3 border border-border-light">
           <div className="w-2 h-2 rounded-full bg-status-up mt-1.5 animate-pulse-slow"></div>
           <div>
@@ -56,6 +71,14 @@ export default function Sidebar() {
             <div className="text-xs text-slate-400 mt-1">Local monitor running</div>
           </div>
         </div>
+        
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-red-500/10 hover:text-red-400 transition-all duration-200 border border-transparent hover:border-red-500/20"
+        >
+          <LogOut className="w-4 h-4" />
+          Sign Out
+        </button>
       </div>
     </aside>
   );

@@ -65,7 +65,7 @@ export default function Monitors() {
           <div className="p-16 text-center text-slate-400">
             <Globe className="w-16 h-16 mx-auto mb-4 opacity-20" />
             <h3 className="text-lg font-medium text-white mb-2">No monitors found</h3>
-            <p className="max-w-sm mx-auto mb-6">You haven't added any websites to monitor yet. Get started by adding your first monitor.</p>
+            <p className="max-w-sm mx-auto mb-6">You haven&apos;t added any websites to monitor yet. Get started by adding your first monitor.</p>
             <Link href="/monitors/new" className="bg-surface-3 hover:bg-surface-4 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors inline-block">
               Add your first monitor
             </Link>

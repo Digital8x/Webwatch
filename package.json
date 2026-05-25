@@ -11,8 +11,10 @@
   "dependencies": {
     "date-fns": "^4.1.0",
     "framer-motion": "^11.11.0",
+    "jose": "^6.2.3",
     "lucide-react": "^0.453.0",
     "next": "^14.2.15",
+    "nodemailer": "^8.0.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.13.3",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.17.0",
+    "@types/nodemailer": "^8.0.0",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@types/uuid": "^10.0.0",

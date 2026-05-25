@@ -11,25 +11,25 @@ export default function MonitorDetail({ params }: { params: { id: string } }) {
   const [data, setData] = useState<{ monitor: Monitor; checks: Check[]; incidents: Incident[] } | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(`/api/monitors/${params.id}`);
-      if (res.ok) {
-        const json = await res.json();
-        setData({
-          monitor: json,
-          checks: json.checks,
-          incidents: json.incidents
-        });
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`/api/monitors/${params.id}`);
+        if (res.ok) {
+          const json = await res.json();
+          setData({
+            monitor: json,
+            checks: json.checks,
+            incidents: json.incidents
+          });
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchData();
     const interval = setInterval(fetchData, 10000);
     return () => clearInterval(interval);

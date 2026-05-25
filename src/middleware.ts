@@ -1,31 +1,33 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { jwtVerify } from 'jose';
 
-export function middleware(req: NextRequest) {
-  // Extract the Authorization header
-  const basicAuth = req.headers.get('authorization');
+const masterPassword = process.env.WEBWATCH_PASSWORD;
+if (!masterPassword) {
+  throw new Error("WEBWATCH_PASSWORD is not set in environment variables");
+}
+const secret = new TextEncoder().encode(masterPassword);
+
+export async function middleware(req: NextRequest) {
+  const token = req.cookies.get('webwatch_session')?.value;
   
-  if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1];
-    const [user, pwd] = Buffer.from(authValue, 'base64').toString().split(':');
-
-    // Master username and password for your Server Engine
-    const masterPassword = process.env.WEBWATCH_PASSWORD || 'WebWatch2026!';
-    if (user === 'admin' && pwd === masterPassword) {
+  if (token) {
+    try {
+      // Verify token
+      await jwtVerify(token, secret);
       return NextResponse.next();
+    } catch (error: any) {
+      // Token is invalid or expired
+      console.error('Token verification failed:', error.message, error.stack || error);
     }
   }
 
-  // If no auth or invalid auth, return 401 and prompt for password
-  return new NextResponse('Authentication required', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': 'Basic realm="Secure WebWatch Dashboard"',
-    },
-  });
+  // Redirect to login if unauthenticated
+  const loginUrl = new URL('/login', req.url);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {
-  // Apply to all routes EXCEPT the cron endpoint, Next.js static files, and images
-  matcher: ['/((?!api/checks/run|_next/static|_next/image|favicon.ico).*)'],
+  // Apply to all routes EXCEPT specific public API routes, static files, login page, and images
+  matcher: ['/((?!api/auth/login|api/auth/logout|api/checks/run|login|_next/static|_next/image|favicon.ico).*)'],
 };

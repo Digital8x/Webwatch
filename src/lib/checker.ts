@@ -1,6 +1,10 @@
 import { Monitor, Check, Incident, MonitorStatus } from '@/types';
 import { v4 as uuidv4 } from 'uuid';
 import * as db from './db';
+import { sendEmailAlert } from './email';
+
+const lastAlertTime = new Map<string, number>();
+const ALERT_COOLDOWN_MS = 5 * 60 * 1000;
 
 async function performHttpCheck(url: string, timeout: number) {
   const startTime = Date.now();
@@ -60,14 +64,29 @@ export async function checkMonitor(monitor: Monitor) {
   });
 
   if (result.status === 'down' && previousStatus !== 'down') {
-    db.createIncident({
+    const newIncident: Incident = {
       id: uuidv4(), monitorId: monitor.id, monitorName: monitor.name,
       monitorUrl: monitor.url, type: 'down', status: 'ongoing', severity: 'critical',
       startedAt: new Date().toISOString(), resolvedAt: null, duration: null,
       cause: result.error || `HTTP ${result.statusCode}`, statusCode: result.statusCode,
-    });
+    };
+    db.createIncident(newIncident);
+    
+    // Trigger email alert with rate limiting
+    const now = Date.now();
+    const lastAlert = lastAlertTime.get(monitor.id) || 0;
+    if (now - lastAlert > ALERT_COOLDOWN_MS) {
+      sendEmailAlert(monitor, newIncident, false);
+      lastAlertTime.set(monitor.id, now);
+    } else {
+      console.log(`Skipping down alert email for ${monitor.name}, on cooldown.`);
+    }
   } else if (result.status === 'up' && (previousStatus === 'down' || previousStatus === 'degraded')) {
     db.resolveIncident(monitor.id);
+    
+    // Trigger recovery email alert
+    sendEmailAlert(monitor, undefined, true);
+    lastAlertTime.delete(monitor.id);
   }
   return { check, previousStatus };
 }
